@@ -1,10 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
-@model IList<btth01.Models.view_Post_Menu>
+﻿@model IList<btth01.Models.view_Post_Menu>
 @using btth01.Utilities;
 
 <!-- Blog Start -->
@@ -14,27 +8,26 @@
             <!-- Blog list Start -->
             <div class="col-lg-8">
                 <div class="row g-5">
-                    @foreach (var item in Model)
+                    @foreach(var item in Model)
                     {
                         string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
                         <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-                            <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="blog-img position-relative overflow-hidden">
-                                    <img class="img-fluid" src="@item.Images" alt="">
-                                    <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">@item.MenuName</a>
+                        <div class="blog-item bg-light rounded overflow-hidden">
+                            <div class="blog-img position-relative overflow-hidden">
+                                <img class="img-fluid" src="@item.Images" alt="">
+                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">@item.MenuName</a>
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex mb-3">
+                                    <small class="me-3"><i class="far fa-user text-primary me-2"></i>@item.Author</small>
+                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>@item.CreatedDate.ToString("dd/MM/yyyy")</small>
                                 </div>
-                                <div class="p-4">
-                                    <div class="d-flex mb-3">
-                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i>@item.Author</small>
-                                        <small><i class="far fa-calendar-alt text-primary me-2"></i>@item.CreatedDate.ToString("dd/MM/yyyy")</small>
-                                    </div>
-                                    <h4 class="mb-3">@item.Title</h4>
-                                    <p>@item.Abstract</p>
-                                    <a class="text-uppercase" href="/@url">Đọc thêm... <i class="bi bi-arrow-right"></i></a>
-                                </div>
+                                <h4 class="mb-3">@item.Title</h4>
+                                <p>@item.Abstract</p>
+                                <a class="text-uppercase" href="/@url">Đọc thêm... <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
-
+                    </div>
                     }
 
                     <div class="col-12 wow slideInUp" data-wow-delay="0.1s">
@@ -82,9 +75,9 @@
                         <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>Email Marketing</a>
                     </div>
                 </div>
-                <!-- Category End -->
+                <!-- Category End -->   
                 @await Component.InvokeAsync("RecentPost")
-
+                
                 <!-- Image Start -->
                 <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
                     <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">

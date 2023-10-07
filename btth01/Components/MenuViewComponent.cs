@@ -1,7 +1,5 @@
 ﻿using btth01.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 namespace btth01.Components
 {
