@@ -1,15 +1,17 @@
-﻿
-using elFinder.NetCore;
+﻿using elFinder.NetCore;
 using elFinder.NetCore.Drivers.FileSystem;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-namespace btth01.Areas.Admin.Controllers
+
+namespace startup.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("/Admin/el-finder-file-system")]
     public class FileSystemController : Controller
     {
+
+
         readonly IWebHostEnvironment _env;
         public FileSystemController(IWebHostEnvironment env) => _env = env;
         [Route("connector")]
@@ -49,8 +51,9 @@ namespace btth01.Areas.Admin.Controllers
             // .. ... wwww/files
             string rootDirectory = Path.Combine(_env.WebRootPath, pathroot);
 
+            // https://localhost:5001/files/
             string url = $"/{pathroot}/";
-            string urlthumb = $"{uri.Scheme}:///Admin/el-finder-file-system/thumb/";
+            string urlthumb = $"{uri.Scheme}://Admin/el-finder-file-system/thumb/";
 
 
             var root = new RootVolume(rootDirectory, url, urlthumb)

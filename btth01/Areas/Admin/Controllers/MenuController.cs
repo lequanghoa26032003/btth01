@@ -20,13 +20,11 @@ namespace btth01.Areas.Admin.Controllers
         }
         public IActionResult Delete(int? id)
         {
-            if (id==null ||id==0)
-            {
+            if (id==null ||id==0) {
                 return NotFound();
             }
             var mn = _context.Menus.Find(id);
-            if (mn==null)
-            {
+            if (mn==null) {
                 return NotFound();
             }
             return View(mn);
@@ -35,8 +33,7 @@ namespace btth01.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             var deleMenu = _context.Menus.Find(id);
-            if (deleMenu==null)
-            {
+            if (deleMenu==null) {
                 return NotFound();
             }
             _context.Menus.Remove(deleMenu);
@@ -64,8 +61,7 @@ namespace btth01.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Menu menu)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 _context.Menus.Add(menu);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -75,13 +71,11 @@ namespace btth01.Areas.Admin.Controllers
         public IActionResult Edit(int? id)
         {
 
-            if (id == null || id == 0)
-            {
+            if (id == null || id == 0) {
                 return NotFound();
             }
             var mn = _context.Menus.Find(id);
-            if (mn == null)
-            {
+            if (mn == null) {
                 return NotFound();
             }
             var mnList = (from m in _context.Menus
@@ -102,8 +96,7 @@ namespace btth01.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Menu menu)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 _context.Menus.Update(menu);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

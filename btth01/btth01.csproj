@@ -21,12 +21,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="wwwroot\files\" />
+    <Folder Include="wwwroot\files\Images\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\lib-281122014606\lib\elFinder\files\.trash\.gitkeep" />
-    <None Include="wwwroot\lib-281122014606\lib\elFinder\php\.tmp\.htaccess" />
+    <None Include="wwwroot\admin\lib\elFinder\files\.trash\.gitkeep" />
+    <None Include="wwwroot\admin\lib\elFinder\php\.tmp\.htaccess" />
   </ItemGroup>
 
 </Project>

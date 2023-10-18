@@ -1,31 +1,38 @@
-﻿@model btth01.Models.Post;
-@using btth01.Utilities;
+﻿﻿@using btth01.Utilities;
+﻿@using btth01.Models;
+@model  btth01.Models.Post;
+
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <main id="main" class="main">
-<div class="pagetitle">
-<h2>Thêm mới bài viết</h2>
-</div>
-<form asp-action="Create" method="post">
-<div class="form-row">
-<div class="form-group col-md-6">
-<label asp-for="MenuID">Chọn mục</label>
-<select asp-for="MenuID" class="form-control"
-asp-items="@(new SelectList (ViewBag.mnList, "Value", "Text"))">
-</select>
-<span asp-validation-for="MenuID" class="alert-danger"></span>
-</div>
-<div class="form-group col-md-12">
-<label asp-for="Title">Title</label>
-<input type="text" class="form-control mb-3" asp-for="Title">
-</div>
-<div class="form-group col-md-12">
-<label asp-for="Abstract">Abstract</label>
-</div>
-<input type="text" class="form-control mb-3" asp-for="Abstract">
+    <div class="pagetitle">
+        <h2>Thêm mới bài viết</h2>
+    </div>
+    <!--Begin Form-->
+    <form asp-action="Create" method="post">
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label asp-for="MenuID">Chọn mục</label>
+                <select asp-for="MenuID" class="form-control" asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))">
+                </select>
+                <span asp-validation-for="MenuID" class="alert-danger"></span>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label asp-for="Title">Title</label>
+                <input type="text" class="form-control mb-3" asp-for="Title">
+            </div>
+
+            <div class="form-group col-md-12">
+                <label asp-for="Abstract">Abstract</label>
+                <input type="text" class="form-control mb-3" asp-for="Abstract">
+            </div>
+
             <div class="from-group col-md-12">
-                <label class="control-label">Images</label>
+                <label class="control-lable">Images</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <button class="btn btn-success" type="button" onclick="openDialog()">Choose a pic</button>
@@ -35,36 +42,44 @@ asp-items="@(new SelectList (ViewBag.mnList, "Value", "Text"))">
             </div>
             <div class="form-group col-md-12">
                 <label asp-for="Contents">Content</label>
-<textarea asp-for="Contents" class="form-control"></textarea>
+                <textarea asp-for="Contents" class="form-control"></textarea>
             </div>
             <div class="form-group col-md-6 mt-3 mb-3">
                 <label>
                     @Html.CheckBox("IsActive", false)
-                    Hiển thị
+                    Hiện thị
                 </label>
             </div>
+
             <div class="form-group d-none">
-                <input asp-for="CreatedDate" class="form-control" value="@Functions.getCurrenDate()" />
+                <input asp-for="CreatedDate" class="form-control" value="@Functions.getCurrentDate()" />
             </div>
             <div class="form-group d-none">
                 <input asp-for="PostOrder" class="form-control" value="1" />
             </div>
+
             <div class="form-group d-none">
                 <input asp-for="Category" class="form-control" value="1" />
             </div>
+
             <div class="form-group d-none">
                 <input asp-for="Status" class="form-control" value="1" />
             </div>
+
             <div class="form-group d-none">
-                <input asp-for="Link" class="form-control" value="NULL" />
+                <input asp-for="Link" class="form-control" value="1" />
             </div>
         </div>
-        <a class="btn btn-lg btn-warning p-2 mr-5" href="javascript: history.back()">
-            <i class="bi bi-arrow-left-circle"></i> Quay lại
+        <a class="btn btn-lg btn-warning p-2 mr-5" href="javascript:history.back()">
+            <i class="bi bi-arrow-left-fill"></i> Quay lại
         </a>
-        <button type="submit" class="btn btn-lg btn-danger p-2">
-            <i class="bi bi-trash-fill"></i> Luu lai
-        </button>
+        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Lưu lại</button>
     </form>
-    </main>
+</main>
 
+
+@{
+    var summernote = new btth01.Areas.Admin.Models.SummerNote("#Contents");
+
+}
+<partial name="_SummerNote" model="summernote"/>
