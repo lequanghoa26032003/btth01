@@ -1,4 +1,5 @@
 ﻿using btth01.Models;
+using btth01.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -16,6 +17,9 @@ namespace btth01.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var mnList = _context.Menus.OrderBy(m => m.MenuID).ToList();
+            if (!Functions.IsLogin())
+                return RedirectToAction("Index", "Login");
+
             return View(mnList);
         }
         public IActionResult Delete(int? id)

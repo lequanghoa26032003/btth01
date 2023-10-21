@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using btth01.Utilities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace btth01.Areas.Admin.Controllers
 {
@@ -8,6 +9,9 @@ namespace btth01.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            if (!Functions.IsLogin())
+                return RedirectToAction("Index", "Login");
+
             return View();
         }
     }

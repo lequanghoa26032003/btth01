@@ -1,4 +1,5 @@
-﻿using elFinder.NetCore;
+﻿using btth01.Utilities;
+using elFinder.NetCore;
 using elFinder.NetCore.Drivers.FileSystem;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -75,6 +76,13 @@ namespace startup.Areas.Admin.Controllers
                 // This allows support for the "onlyMimes" option on the client.
                 MimeDetect = MimeDetectOption.Internal
             };
+        }
+        public IActionResult Index()
+        {
+            if (!Functions.IsLogin())
+                return RedirectToAction("Index", "Login");
+
+            return View();
         }
     }
 }
